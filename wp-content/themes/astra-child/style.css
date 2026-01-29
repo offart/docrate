@@ -1,0 +1,17 @@
+/*
+ Theme Name:   Astra Child - Docrate
+ Theme URI:    https://docrate.co.il
+ Description:  Child theme for Docrate - Doctors Rating Platform
+ Author:       Meir
+ Author URI:   https://mic.co.il
+ Template:     astra
+ Version:      1.0.0
+ Text Domain:  astra-child
+*/
+
+/* RTL Support */
+html[dir="rtl"] body,
+body.rtl {
+    direction: rtl;
+    text-align: right;
+}

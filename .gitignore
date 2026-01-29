@@ -1,0 +1,53 @@
+# Docrate - Git Ignore
+# Contract §D: Secrets NOT in git
+
+# === SECRETS - NEVER COMMIT ===
+**/docrate-secrets.php
+**/*secrets*.php
+**/.env
+**/*.env
+**/credentials*
+**/*-key.php
+
+# === WordPress Core (don't track) ===
+/wp-admin/
+/wp-includes/
+/wp-*.php
+/index.php
+/license.txt
+/readme.html
+/xmlrpc.php
+
+# === Uploads (too large for git) ===
+/wp-content/uploads/
+
+# === Plugins (install via composer or manually) ===
+/wp-content/plugins/
+
+# === Other themes ===
+/wp-content/themes/astra/
+/wp-content/themes/twenty*/
+
+# === IDE & OS ===
+.vscode/
+!.vscode/sftp.json
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# === Dependencies ===
+node_modules/
+vendor/
+
+# === Logs ===
+*.log
+/wp-content/debug.log
+
+# === Backups ===
+*.bak
+*.backup
+*.sql
+*.sql.gz
