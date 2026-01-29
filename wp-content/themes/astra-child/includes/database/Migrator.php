@@ -18,8 +18,9 @@ class Docrate_Migrator {
 
     /**
      * Current schema version
+     * FROZEN: Set to 0 until Excel files analyzed and schema finalized
      */
-    const CURRENT_VERSION = 1;
+    const CURRENT_VERSION = 0;
 
     /**
      * Run pending migrations

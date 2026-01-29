@@ -5,7 +5,12 @@
       "Bash(scp:*)",
       "Bash(git config:*)",
       "Bash(git init:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nInitial setup: astra-child theme with Config system\n\n- Astra child theme structure\n- Config class for secrets management \\(Contract §D\\)\n- SFTP configuration for staging/live deployment\n- Git ignore for secrets and WordPress core\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git remote add:*)",
+      "Bash(git branch:*)",
+      "Bash(git push:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nAdd database schema and import infrastructure\n\nDatabase \\(Contract §A, §B\\):\n- Schema.php: table definitions and helpers\n- Migrator.php: migration system for schema changes\n- Migration 0001: Initial tables for doctors, arrangements,\n  specialties, import logs, AI mappings, ratings\n\nImport \\(Contract §G, §H\\):\n- ImportLock.php: prevents concurrent imports\n- Sanitizer.php: sanitizes all untrusted input\n- ExcelParser.php: parses CSV/Excel files\n\nTables created:\n- wp_docrate_doctors\n- wp_docrate_arrangements\n- wp_docrate_specialties\n- wp_docrate_import_logs\n- wp_docrate_import_rows\n- wp_docrate_ai_mappings\n- wp_docrate_entry_logs\n- wp_docrate_ratings\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")"
     ]
   }
 }

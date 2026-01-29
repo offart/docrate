@@ -59,17 +59,8 @@ foreach ($docrate_includes as $file) {
 }
 
 /**
- * Run database migrations on theme activation
- */
-function docrate_theme_activation() {
-    if (class_exists('Docrate_Migrator')) {
-        Docrate_Migrator::migrate();
-    }
-}
-add_action('after_switch_theme', 'docrate_theme_activation');
-
-/**
  * Admin notice for pending migrations
+ * NOTE: Migrations run manually via Admin button only (not auto-run)
  */
 function docrate_migration_notice() {
     if (!current_user_can('manage_options')) {
