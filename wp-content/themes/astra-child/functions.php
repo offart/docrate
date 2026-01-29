@@ -35,6 +35,52 @@ function docrate_enqueue_styles() {
 add_action('wp_enqueue_scripts', 'docrate_enqueue_styles');
 
 /**
- * Load Config class
+ * Load Docrate classes
  */
-require_once get_stylesheet_directory() . '/includes/config/Config.php';
+$docrate_includes = array(
+    // Config (Contract §D)
+    'config/Config.php',
+
+    // Database (Contract §A, §B)
+    'database/Schema.php',
+    'database/Migrator.php',
+
+    // Import (Contract §G, §H)
+    'import/ImportLock.php',
+    'import/Sanitizer.php',
+    'import/ExcelParser.php',
+);
+
+foreach ($docrate_includes as $file) {
+    $path = get_stylesheet_directory() . '/includes/' . $file;
+    if (file_exists($path)) {
+        require_once $path;
+    }
+}
+
+/**
+ * Run database migrations on theme activation
+ */
+function docrate_theme_activation() {
+    if (class_exists('Docrate_Migrator')) {
+        Docrate_Migrator::migrate();
+    }
+}
+add_action('after_switch_theme', 'docrate_theme_activation');
+
+/**
+ * Admin notice for pending migrations
+ */
+function docrate_migration_notice() {
+    if (!current_user_can('manage_options')) {
+        return;
+    }
+
+    if (class_exists('Docrate_Migrator') && Docrate_Migrator::has_pending()) {
+        echo '<div class="notice notice-warning"><p>';
+        echo '<strong>Docrate:</strong> Database migrations pending. ';
+        echo '<a href="' . esc_url(admin_url('admin.php?page=docrate-settings&action=migrate')) . '">Run migrations</a>';
+        echo '</p></div>';
+    }
+}
+add_action('admin_notices', 'docrate_migration_notice');
